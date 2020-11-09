@@ -33,7 +33,6 @@ public class ChunkPlacer : MonoBehaviour
     private void SpawnChunk()
     {
         Chunk newChunk=null;
-        //if (UnityEngine.Random.Range(0,100)>5)
         if (UnityEngine.Random.Range(0, 100) > 5)
         {
             newChunk = Instantiate(chunkPrefabs[UnityEngine.Random.Range(0, chunkPrefabs.Length-2)],road.transform);

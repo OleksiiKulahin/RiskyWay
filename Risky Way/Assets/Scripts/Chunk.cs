@@ -28,17 +28,10 @@ public class Chunk : MonoBehaviour
     {
         if (collider.tag == "Player"&& roadRotation!=0)
         {
+            BoxCollider boxCollider= this.GetComponent<BoxCollider>();
+            boxCollider.enabled = false;
             _knifeController.changeDirection(roadRotation, begin,end);
             //Debug.Log(roadRotation);
         }
     }
-
-    private void OnTriggerExit(Collider collider)
-    {
-        /*if (collider.tag=="Player")
-        {
-            _chunkPlacer.calculateLenght(end);
-        }*/
-    }
-
 }

@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393785758}
   m_LocalRotation: {x: 0.13019644, y: 0.6040063, z: -0.100848466, w: 0.7797788}
-  m_LocalPosition: {x: -9, y: 9, z: -3.5}
+  m_LocalPosition: {x: -8, y: 9, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -338,9 +338,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1747276292}
   - component: {fileID: 1747276293}
+  - component: {fileID: 1747276294}
   m_Layer: 0
   m_Name: KnifeCenter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747276291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -373,8 +374,22 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!136 &1747276294
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747276291}
+  m_Material: {fileID: 13400000, guid: 5f3390918fd4d9f43898d9a23504cdbc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1837342566
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +489,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5278512246065534571, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5278512246065534571, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 934515133444789498, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 393785758}
+    - target: {fileID: 934515133444789498, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: _knifeCenter
+      value: 
+      objectReference: {fileID: 1747276291}
+    - target: {fileID: 4969991137581191647, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046621867958247456, guid: 4593fe2c1c40940489d5e5fee1bb9033,
         type: 3}
       propertyPath: m_Name
@@ -487,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 6622564110270054403, guid: 4593fe2c1c40940489d5e5fee1bb9033,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6622564110270054403, guid: 4593fe2c1c40940489d5e5fee1bb9033,
         type: 3}
