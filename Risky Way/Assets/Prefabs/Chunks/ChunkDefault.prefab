@@ -105,6 +105,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   begin: {fileID: 4967634289391860760}
   end: {fileID: 2848840969300815456}
+  circleCenter: {fileID: 0}
+  roadRotation: 0
+  chanceFromDistance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 0.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!65 &1563016562502882429
 BoxCollider:
   m_ObjectHideFlags: 0

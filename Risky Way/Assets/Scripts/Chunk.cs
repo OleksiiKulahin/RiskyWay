@@ -8,17 +8,16 @@ public class Chunk : MonoBehaviour
     public Transform end;
     public Transform circleCenter;
     public int roadRotation;
-
-    //private ChunkPlacer _chunkPlacer;
+    public AnimationCurve chanceFromDistance;
     private KnifeController _knifeController;
-    // Start is called before the first frame update
+    private ChunkPlacer _chunkPlacer;
+
     void Start()
     {
-        //_chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
+        _chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -31,7 +30,14 @@ public class Chunk : MonoBehaviour
             BoxCollider boxCollider= this.GetComponent<BoxCollider>();
             boxCollider.enabled = false;
             _knifeController.changeDirection(roadRotation, begin,end);
-            //Debug.Log(roadRotation);
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            _chunkPlacer.setTraversedChunks();
         }
     }
 }

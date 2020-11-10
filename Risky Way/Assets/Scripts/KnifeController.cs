@@ -36,8 +36,6 @@ public class KnifeController : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    [Obsolete]
     void Update()
     {
         float shift;
@@ -125,7 +123,6 @@ public class KnifeController : MonoBehaviour
         {
             _rigidbody.velocity = new Vector3(0, 0, 0);
         }
-        Debug.Log(_direction.eulerAngles);
     }
 
     public void changeDirection(int angle, Transform begin, Transform end)
