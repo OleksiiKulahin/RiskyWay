@@ -66,6 +66,14 @@
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
     <Compile Include="Assets\Scripts\KnifeController.cs" />
+    <Compile Include="Assets\Scripts\LoadingBar.cs" />
+    <Compile Include="Assets\loadingBar\scripts\Loading.cs" />
+    <Compile Include="Assets\loadingBar\scripts\SimpleLoading.cs" />
+    <Compile Include="Assets\loadingBar\scripts\loadingbar.cs" />
+    <Compile Include="Assets\loadingBar\scripts\loadingcolorful.cs" />
+    <Compile Include="Assets\loadingBar\scripts\loadingtext.cs" />
+    <Compile Include="Assets\loadingBar\scripts\rotatetotate.cs" />
+    <Compile Include="Assets\loadingBar\scripts\simplerotate.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Programs/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

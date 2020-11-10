@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Chunk : MonoBehaviour
 {
+    public bool isFinish;
+    public int roadRotation;
     public Transform begin;
     public Transform end;
     public Transform circleCenter;
-    public int roadRotation;
     public AnimationCurve chanceFromDistance;
     private KnifeController _knifeController;
     private ChunkPlacer _chunkPlacer;
@@ -38,6 +37,10 @@ public class Chunk : MonoBehaviour
         if (collider.tag == "Player")
         {
             _chunkPlacer.setTraversedChunks();
+        }
+        if (collider.tag == "Player"&&isFinish)
+        {
+            _knifeController.finishGame();
         }
     }
 }

@@ -1,28 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KnifeController : MonoBehaviour
 {
-    public float speedTransverse=10;
-    public float speedLengthwise=2;
+    public bool pause;
     private float _moveInput;
-    private Rigidbody _rigidbody;
-    private Transform _transformKnife;
-    private Transform _transformCamera;
-    private Transform _transformCenter;
-    private Rigidbody _rigidbodyCenter;
-    private bool _pause=true;
+    public float speed;
+    private int _width;
     public GameObject _camera;
-    public GameObject _knifeCenter;
+    public GameObject _knifeCenter; 
+    private Transform _transformKnife;
+    private Transform _transformCenter;
+    private Transform _transformCamera;
+    private Rigidbody _rigidbody;
+    private Rigidbody _rigidbodyCenter;
+    private CapsuleCollider _colliderCenter;
     private Vector3 _defaultCameraPosition;
     private Quaternion _defaultCameraRotation;
-    private int width = Screen.width;
-    private Quaternion _direction = Quaternion.Euler(0, 0, 0);
-    private CapsuleCollider _colliderCenter;
+    private Quaternion _direction;
     void Start()
     {
+        pause = true;
+        speed = 10;
+        _direction = Quaternion.Euler(0, 0, 0);
         _rigidbody = GetComponent<Rigidbody>();
         _transformKnife = GetComponent<Transform>();
         _camera = GameObject.Find("Main Camera");
@@ -39,28 +39,29 @@ public class KnifeController : MonoBehaviour
     void Update()
     {
         float shift;
-        _pause = false;
-        //if (Input.GetKey(KeyCode.Return)) { _pause = false; }
+        _width = Screen.width;
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
         {
             if (Input.touchCount > 0)
             {
                 _moveInput = Input.GetTouch(0).position.x;
+                pause = false;
             }
         }
 
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
+            if (Input.GetKey(KeyCode.Return)) { pause = false; }
             _moveInput = Input.mousePosition.x;
         }
 
 
-        if (!_pause)
+        if (!pause)
         {
-            shift = -1 * (_moveInput - (width / 2)) * (4.8f / width);
+            shift = -1 * (_moveInput - (_width / 2)) * (4.8f / _width);
 
-            _rigidbodyCenter.velocity = new Vector3(speedLengthwise * (float)Math.Cos(_direction.eulerAngles.y * (Math.PI / 180)),
-                _rigidbodyCenter.velocity.y, speedLengthwise * (float)Math.Sin(_direction.eulerAngles.y * (Math.PI / 180)));
+            _rigidbodyCenter.velocity = new Vector3(speed * (float)Math.Cos(_direction.eulerAngles.y * (Math.PI / 180)),
+                _rigidbodyCenter.velocity.y, speed * (float)Math.Sin(_direction.eulerAngles.y * (Math.PI / 180)));
 
             if (shift > -2.4f && shift < 2.4f) 
             {
@@ -84,7 +85,6 @@ public class KnifeController : MonoBehaviour
                             0, 2.4f * (float)Math.Sin((_direction.eulerAngles.y + 90) * (Math.PI / 180)));
                 }
             }
-
 
             if (_direction.eulerAngles.y == 0)
             {
@@ -123,6 +123,10 @@ public class KnifeController : MonoBehaviour
         {
             _rigidbody.velocity = new Vector3(0, 0, 0);
         }
+        if (pause)
+        {
+            _transformCamera.RotateAround(_transformKnife.position, Vector3.up, 30 * Time.deltaTime);
+        }
     }
 
     public void changeDirection(int angle, Transform begin, Transform end)
@@ -132,5 +136,10 @@ public class KnifeController : MonoBehaviour
         /*float b = (float)Math.Sqrt((Math.Pow(end.position.x - begin.position.x, 2)
             + Math.Pow(end.position.z - begin.position.z, 2)));
         float radius = (float)(b/ (2*Math.Cos(((180-angle)/2) * (Math.PI / 180))));*/
+    }
+
+    public void finishGame()
+    {
+        pause = true;
     }
 }
