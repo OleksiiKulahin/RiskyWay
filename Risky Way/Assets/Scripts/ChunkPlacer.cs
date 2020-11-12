@@ -10,27 +10,25 @@ public class ChunkPlacer : MonoBehaviour
     public GameObject road;
     public GameObject knifeCenter;
     public Chunk[] chunkPrefabs;
-    public Chunk firstChunk; 
+    //public Chunk firstChunk; 
     public Transform knife;
     private List<Chunk> _spawnedChunks ;
     private List<Chunk> _generatedChunks;
     private Quaternion _direction;
+    private InterfaceManager _interfaceManager;
+
+    private int totalSpawnedChunks;
 
     void Start()
     {
-        traversedChunks = 1;
-        _spawnedChunks = new List<Chunk>();
-        _generatedChunks = new List<Chunk>();
-        _spawnedChunks.Add(firstChunk);
-        _direction = Quaternion.Euler(0, 0, 0);
-        countChunks = UnityEngine.Random.Range(30, 60);
-        generateRoad();
+        _interfaceManager = GameObject.Find("Canvas").GetComponent<InterfaceManager>();
+        startSettings();
     }
 
     void Update()
     {
-        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < 30
-            && traversedChunks<_generatedChunks.Count)
+        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < 500
+            && traversedChunks<_generatedChunks.Count&& !_interfaceManager._finishScreen&& totalSpawnedChunks<=countChunks)
         {
             SpawnChunk();
         }
@@ -52,6 +50,7 @@ public class ChunkPlacer : MonoBehaviour
             _generatedChunks[UnityEngine.Random.Range(0, _generatedChunks.Count)] 
                 = chunkPrefabs[UnityEngine.Random.Range(chunkPrefabs.Length - 2, chunkPrefabs.Length)];
         }
+
         _generatedChunks[_generatedChunks.Count-1] = chunkPrefabs[chunkPrefabs.Length - 3];
         _generatedChunks[_generatedChunks.Count-2] = chunkPrefabs[chunkPrefabs.Length - 5];
     }
@@ -79,10 +78,12 @@ public class ChunkPlacer : MonoBehaviour
     private void SpawnChunk()
     {
         Chunk newChunk=null;
-        newChunk = Instantiate(_generatedChunks[traversedChunks], road.transform);
-        newChunk.transform.rotation = _direction;
-        _direction = Quaternion.Euler(0, _direction.eulerAngles.y - _generatedChunks[traversedChunks].roadRotation, 0);
-
+        totalSpawnedChunks++;
+        {
+            newChunk = Instantiate(_generatedChunks[totalSpawnedChunks-1], road.transform);
+            newChunk.transform.rotation = _direction;
+            _direction = Quaternion.Euler(0, _direction.eulerAngles.y - _generatedChunks[totalSpawnedChunks-1].roadRotation, 0);
+        }
         newChunk.transform.position = _spawnedChunks[_spawnedChunks.Count - 1].end.position-newChunk.begin.localPosition;
 
         _spawnedChunks.Add(newChunk);
@@ -92,19 +93,6 @@ public class ChunkPlacer : MonoBehaviour
             Destroy(_spawnedChunks[0].gameObject);
             _spawnedChunks.RemoveAt(0);
         }
-    }
-
-    private int countRotationChunks(List<Chunk> spawnedChunks)
-    {
-        int count = 0;
-        for (int i = 0; i < spawnedChunks.Count; i++)
-        {
-            if (spawnedChunks[i].roadRotation!=0)
-            {
-                count++;
-            }
-        }
-        return count;
     }
 
     public float getTotalLenght(List<float>roadLenght)
@@ -119,5 +107,29 @@ public class ChunkPlacer : MonoBehaviour
         float lenght = (float)Math.Sqrt((Math.Pow((double)(end.x - movingPoint.x), 2)
             + Math.Pow((double)(end.z - movingPoint.z), 2)));
         return lenght;
+    }
+
+    public void startSettings()
+    {
+        traversedChunks = 1;
+        totalSpawnedChunks = 1;
+
+        if(_generatedChunks!=null&&_generatedChunks.Count>1)
+        {
+            for (int i = 0; i < _spawnedChunks.Count; i++)
+            {
+                Destroy(_spawnedChunks[i].gameObject);
+            }
+        }
+        _direction = Quaternion.Euler(0, 0, 0);
+        _spawnedChunks = new List<Chunk>();
+        _generatedChunks = new List<Chunk>(); 
+        Chunk newChunk = Instantiate(chunkPrefabs[chunkPrefabs.Length - 4], road.transform);
+        newChunk.transform.rotation = _direction;
+        newChunk.transform.position = new Vector3(0,0,0);
+        _generatedChunks.Add(newChunk);
+        _spawnedChunks.Add(newChunk);
+        countChunks = UnityEngine.Random.Range(30, 60);
+        generateRoad();
     }
 }

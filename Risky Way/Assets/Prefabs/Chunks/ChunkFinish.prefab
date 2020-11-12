@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 8410607497062498775}
   m_Layer: 0
   m_Name: ChunkFinish
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8b1eee04f1c114daca9748d7eb1fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFinish: 1
+  roadRotation: 0
   begin: {fileID: 2735968299978123698}
   end: {fileID: 5080505105441995722}
   circleCenter: {fileID: 0}
-  roadRotation: 0
   chanceFromDistance:
     serializedVersion: 2
     m_Curve:
@@ -124,7 +125,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isFinish: 1
 --- !u!65 &8410607497062498775
 BoxCollider:
   m_ObjectHideFlags: 0

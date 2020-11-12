@@ -12,29 +12,30 @@ public class KnifeController : MonoBehaviour
     private Transform _transformKnife;
     private Transform _transformCenter;
     private Transform _transformCamera;
-    private Rigidbody _rigidbody;
     private Rigidbody _rigidbodyCenter;
     private CapsuleCollider _colliderCenter;
     private Vector3 _defaultCameraPosition;
     private Quaternion _defaultCameraRotation;
     private Quaternion _direction;
+
+    public void setPause(bool pause)
+    {
+        this.pause = pause;
+    }
     void Start()
     {
-        pause = true;
-        speed = 10;
-        _direction = Quaternion.Euler(0, 0, 0);
-        _rigidbody = GetComponent<Rigidbody>();
         _transformKnife = GetComponent<Transform>();
         _camera = GameObject.Find("Main Camera");
+        _knifeCenter = GameObject.Find("KnifeCenter"); 
         _transformCamera = _camera.GetComponent<Transform>();
-        _knifeCenter = GameObject.Find("KnifeCenter");
-        _rigidbodyCenter = _knifeCenter.GetComponent<Rigidbody>();
-        _transformCenter = _knifeCenter.GetComponent<Transform>();
         _defaultCameraPosition = _transformCamera.position;
         _defaultCameraRotation = _transformCamera.rotation;
+        _rigidbodyCenter = _knifeCenter.GetComponent<Rigidbody>();
+        _transformCenter = _knifeCenter.GetComponent<Transform>();
         _colliderCenter = _knifeCenter.GetComponent<CapsuleCollider>();
-    }
 
+        setStartSettings();
+    }
 
     void Update()
     {
@@ -48,13 +49,11 @@ public class KnifeController : MonoBehaviour
                 pause = false;
             }
         }
-
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
             if (Input.GetKey(KeyCode.Return)) { pause = false; }
             _moveInput = Input.mousePosition.x;
         }
-
 
         if (!pause)
         {
@@ -86,7 +85,7 @@ public class KnifeController : MonoBehaviour
                 }
             }
 
-            if (_direction.eulerAngles.y == 0)
+            if (_direction.eulerAngles.y>-1|| _direction.eulerAngles.y<1)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
@@ -94,7 +93,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0,0, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y == 90)
+            if (_direction.eulerAngles.y > 89 || _direction.eulerAngles.y < 91)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.z,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.x);
@@ -102,7 +101,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y+270, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0, 90, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y == 180)
+            if (_direction.eulerAngles.y > 179 || _direction.eulerAngles.y < 181)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.z);
@@ -110,7 +109,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y+180, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0, 180, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y == 270)
+            if (_direction.eulerAngles.y > 269 || _direction.eulerAngles.y < 271)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.z,
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.x);
@@ -121,7 +120,7 @@ public class KnifeController : MonoBehaviour
         }
         else
         {
-            _rigidbody.velocity = new Vector3(0, 0, 0);
+            _rigidbodyCenter.velocity = new Vector3(0, 0, 0);
         }
         if (pause)
         {
@@ -138,8 +137,18 @@ public class KnifeController : MonoBehaviour
         float radius = (float)(b/ (2*Math.Cos(((180-angle)/2) * (Math.PI / 180))));*/
     }
 
-    public void finishGame()
+    public void setStartSettings()
     {
         pause = true;
+        speed = 20;
+        _direction = Quaternion.Euler(0, 0, 0);
+        _transformCenter.position = new Vector3(0, 5, 0);
+
+        _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
+                    _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
+        _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
+            _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
+        _transformKnife.rotation = Quaternion.Euler(0, 0, _transformKnife.rotation.z);
     }
+
 }

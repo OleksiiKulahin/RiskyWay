@@ -10,11 +10,15 @@ public class Chunk : MonoBehaviour
     public AnimationCurve chanceFromDistance;
     private KnifeController _knifeController;
     private ChunkPlacer _chunkPlacer;
+    private LevelManager _levelManager;
+    private InterfaceManager _interfaceManager;
 
     void Start()
     {
         _chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
+        _levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        _interfaceManager = GameObject.Find("Canvas").GetComponent<InterfaceManager>();
     }
 
     void Update()
@@ -38,9 +42,10 @@ public class Chunk : MonoBehaviour
         {
             _chunkPlacer.setTraversedChunks();
         }
-        if (collider.tag == "Player"&&isFinish)
+        if (collider.tag == "Player"&&tag=="Finish")
         {
-            _knifeController.finishGame();
+            _knifeController.setPause(true);
+            _interfaceManager._finishScreen = true;
         }
     }
 }
