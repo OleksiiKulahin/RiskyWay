@@ -10,7 +10,6 @@ public class ChunkPlacer : MonoBehaviour
     public GameObject road;
     public GameObject knifeCenter;
     public Chunk[] chunkPrefabs;
-    //public Chunk firstChunk; 
     public Transform knife;
     private List<Chunk> _spawnedChunks ;
     private List<Chunk> _generatedChunks;
@@ -27,7 +26,7 @@ public class ChunkPlacer : MonoBehaviour
 
     void Update()
     {
-        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < 500
+        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < 40
             && traversedChunks<_generatedChunks.Count&& !_interfaceManager._finishScreen&& totalSpawnedChunks<=countChunks)
         {
             SpawnChunk();

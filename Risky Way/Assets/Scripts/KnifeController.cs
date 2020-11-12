@@ -85,7 +85,7 @@ public class KnifeController : MonoBehaviour
                 }
             }
 
-            if (_direction.eulerAngles.y>-1|| _direction.eulerAngles.y<1)
+            if (_direction.eulerAngles.y>-1&& _direction.eulerAngles.y<1)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
@@ -93,7 +93,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0,0, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y > 89 || _direction.eulerAngles.y < 91)
+            if (_direction.eulerAngles.y > 89 && _direction.eulerAngles.y < 91)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.z,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.x);
@@ -101,7 +101,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y+270, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0, 90, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y > 179 || _direction.eulerAngles.y < 181)
+            if (_direction.eulerAngles.y > 179 && _direction.eulerAngles.y < 181)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.z);
@@ -109,7 +109,7 @@ public class KnifeController : MonoBehaviour
                     _defaultCameraRotation.eulerAngles.y+180, _defaultCameraRotation.eulerAngles.z);
                 _transformKnife.rotation = Quaternion.Euler(0, 180, _transformKnife.rotation.z);
             }
-            if (_direction.eulerAngles.y > 269 || _direction.eulerAngles.y < 271)
+            if (_direction.eulerAngles.y > 269 && _direction.eulerAngles.y < 271)
             {
                 _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.z,
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.x);
