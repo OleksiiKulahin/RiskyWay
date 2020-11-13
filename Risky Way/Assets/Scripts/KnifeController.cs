@@ -41,19 +41,19 @@ public class KnifeController : MonoBehaviour
     {
         float shift;
         _width = Screen.width;
+
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
         {
             if (Input.touchCount > 0)
             {
                 _moveInput = Input.GetTouch(0).position.x;
-                pause = false;
             }
         }
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
-            if (Input.GetKey(KeyCode.Return)) { pause = false; }
             _moveInput = Input.mousePosition.x;
         }
+
 
         if (!pause)
         {
@@ -133,17 +133,17 @@ public class KnifeController : MonoBehaviour
         _direction = Quaternion.Euler(_direction.eulerAngles.x, _direction.eulerAngles.y+ angle, _direction.eulerAngles.z);
         
         /*float b = (float)Math.Sqrt((Math.Pow(end.position.x - begin.position.x, 2)
-            + Math.Pow(end.position.z - begin.position.z, 2)));
-        float radius = (float)(b/ (2*Math.Cos(((180-angle)/2) * (Math.PI / 180))));*/
+            + Math.Pow(end.position.z - begin.position.z, 2)));*/
     }
 
     public void setStartSettings()
     {
         pause = true;
-        speed = 20;
+        speed = 12;
         _direction = Quaternion.Euler(0, 0, 0);
         _transformCenter.position = new Vector3(0, 5, 0);
 
+        _transformKnife.position = new Vector3(0, 5, 0);
         _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
         _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,

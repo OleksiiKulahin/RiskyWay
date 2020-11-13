@@ -7,6 +7,7 @@ public class ChunkPlacer : MonoBehaviour
 {
     public int countChunks;
     public int traversedChunks;
+    public int spawnDistance;
     public GameObject road;
     public GameObject knifeCenter;
     public Chunk[] chunkPrefabs;
@@ -14,20 +15,20 @@ public class ChunkPlacer : MonoBehaviour
     private List<Chunk> _spawnedChunks ;
     private List<Chunk> _generatedChunks;
     private Quaternion _direction;
-    private InterfaceManager _interfaceManager;
+    private UIManager _UIManager;
 
     private int totalSpawnedChunks;
 
     void Start()
     {
-        _interfaceManager = GameObject.Find("Canvas").GetComponent<InterfaceManager>();
+        _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         startSettings();
     }
 
     void Update()
     {
-        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < 40
-            && traversedChunks<_generatedChunks.Count&& !_interfaceManager._finishScreen&& totalSpawnedChunks<=countChunks)
+        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[_spawnedChunks.Count - 1].transform.position) < spawnDistance
+            && traversedChunks<_generatedChunks.Count&& !_UIManager._finishScreen&& totalSpawnedChunks<=countChunks)
         {
             SpawnChunk();
         }
@@ -51,6 +52,7 @@ public class ChunkPlacer : MonoBehaviour
         }
 
         _generatedChunks[_generatedChunks.Count-1] = chunkPrefabs[chunkPrefabs.Length - 3];
+        //_generatedChunks[5] = chunkPrefabs[chunkPrefabs.Length - 3];
         _generatedChunks[_generatedChunks.Count-2] = chunkPrefabs[chunkPrefabs.Length - 5];
     }
 
@@ -128,7 +130,7 @@ public class ChunkPlacer : MonoBehaviour
         newChunk.transform.position = new Vector3(0,0,0);
         _generatedChunks.Add(newChunk);
         _spawnedChunks.Add(newChunk);
-        countChunks = UnityEngine.Random.Range(30, 60);
+        countChunks = UnityEngine.Random.Range(60, 100);
         generateRoad();
     }
 }

@@ -65,9 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
-    <Compile Include="Assets\Scripts\InterfaceManager.cs" />
     <Compile Include="Assets\Scripts\KnifeController.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\loadingBar\scripts\Loading.cs" />
     <Compile Include="Assets\loadingBar\scripts\SimpleLoading.cs" />
     <Compile Include="Assets\loadingBar\scripts\loadingbar.cs" />
