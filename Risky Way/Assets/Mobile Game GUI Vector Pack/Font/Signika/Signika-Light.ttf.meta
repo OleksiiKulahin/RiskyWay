@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 68cd011d2c2ca4e4aad7ba356d018fc6
+timeCreated: 1506526026
+licenseType: Store
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Signika
+  fontNames:
+  - Signika
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

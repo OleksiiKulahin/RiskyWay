@@ -34,9 +34,10 @@ public class ChunkPlacer : MonoBehaviour
         }
     }
 
-    public void setTraversedChunks()
+    public void iterateTraversedChunks()
     {
         traversedChunks++;
+        //Debug.Log(traversedChunks);
     }
 
     private void generateRoad()
@@ -51,8 +52,13 @@ public class ChunkPlacer : MonoBehaviour
                 = chunkPrefabs[UnityEngine.Random.Range(chunkPrefabs.Length - 2, chunkPrefabs.Length)];
         }
 
+        /*for (int i = 0; i < countChunks; i++)
+        {
+            _generatedChunks[i] = chunkPrefabs[2];
+        }*/
+
         _generatedChunks[_generatedChunks.Count-1] = chunkPrefabs[chunkPrefabs.Length - 3];
-        //_generatedChunks[5] = chunkPrefabs[chunkPrefabs.Length - 3];
+        //_generatedChunks[5] = chunkPrefabs[chunkPrefabs.Length - 2];
         _generatedChunks[_generatedChunks.Count-2] = chunkPrefabs[chunkPrefabs.Length - 5];
     }
 

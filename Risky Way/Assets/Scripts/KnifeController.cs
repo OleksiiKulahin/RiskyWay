@@ -18,6 +18,8 @@ public class KnifeController : MonoBehaviour
     private Quaternion _defaultCameraRotation;
     private Quaternion _direction;
 
+    public int lifes;
+
     public void setPause(bool pause)
     {
         this.pause = pause;
@@ -140,6 +142,7 @@ public class KnifeController : MonoBehaviour
     {
         pause = true;
         speed = 12;
+        lifes = 3;
         _direction = Quaternion.Euler(0, 0, 0);
         _transformCenter.position = new Vector3(0, 5, 0);
 

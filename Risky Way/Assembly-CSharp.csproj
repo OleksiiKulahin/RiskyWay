@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BoxColliderChunk.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderLava.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderRotation.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
     <Compile Include="Assets\Scripts\KnifeController.cs" />

@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9222232108532737934}
   - component: {fileID: 2225078036133985143}
-  - component: {fileID: 6221299242073904868}
   m_Layer: 0
   m_Name: ChunkStart
   m_TagString: Untagged
@@ -90,6 +89,7 @@ Transform:
   - {fileID: 4257285793732031313}
   - {fileID: 3050494503717799155}
   - {fileID: 4726467514827827156}
+  - {fileID: 1434429361344332067}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8b1eee04f1c114daca9748d7eb1fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFinish: 0
+  roadRotation: 0
   begin: {fileID: 510623008141999745}
   end: {fileID: 7237161722773023993}
   circleCenter: {fileID: 0}
-  roadRotation: 0
   chanceFromDistance:
     serializedVersion: 2
     m_Curve:
@@ -124,20 +125,87 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  isFinish: 0
---- !u!65 &6221299242073904868
+  ColliderChunkExitEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2225078036133985143}
+        m_MethodName: onColliderChunkExitEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ColliderLavaEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ColliderLavaExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ColliderRotationEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &7090986093521276368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434429361344332067}
+  - component: {fileID: 6478474653677342783}
+  - component: {fileID: 5880402195600898413}
+  m_Layer: 0
+  m_Name: BoxColliderChunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1434429361344332067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090986093521276368}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9222232108532737934}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6478474653677342783
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303114414655406577}
+  m_GameObject: {fileID: 7090986093521276368}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 10, z: 5}
   m_Center: {x: 2.5, y: 3.5, z: 0}
+--- !u!114 &5880402195600898413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090986093521276368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f83e392070b8374abc39c4ebf841362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentChunk: {fileID: 2225078036133985143}
 --- !u!1 &7474644482232336410
 GameObject:
   m_ObjectHideFlags: 0
