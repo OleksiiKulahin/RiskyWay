@@ -30,6 +30,64 @@ Transform:
   m_Father: {fileID: 2385094891976183780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5241930354360374215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3192875899899924115}
+  - component: {fileID: 5863952093676593756}
+  - component: {fileID: 388494246132803356}
+  m_Layer: 0
+  m_Name: BoxColliderChunk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3192875899899924115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241930354360374215}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2385094891976183780}
+  m_RootOrder: 33
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5863952093676593756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241930354360374215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 10, z: 5}
+  m_Center: {x: 2.5, y: 3.5, z: 0}
+--- !u!114 &388494246132803356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241930354360374215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f83e392070b8374abc39c4ebf841362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentChunk: {fileID: -5258195819079059151}
 --- !u!1 &8274932215007188638
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +128,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2385094891976183780}
   - component: {fileID: -5258195819079059151}
-  - component: {fileID: 1179041425856839233}
   m_Layer: 0
   m_Name: ChunkHighGround1
   m_TagString: Untagged
@@ -122,6 +179,7 @@ Transform:
   - {fileID: 5834135030319435520}
   - {fileID: 822592036862026095}
   - {fileID: 7742176666628814900}
+  - {fileID: 3192875899899924115}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,7 +226,18 @@ MonoBehaviour:
     m_RotationOrder: 4
   ColliderChunkExitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5258195819079059151}
+        m_MethodName: onColliderChunkExitEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ColliderLavaEnterEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -178,19 +247,6 @@ MonoBehaviour:
   ColliderRotationEnterEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!65 &1179041425856839233
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8301674632727980443}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 10, z: 5}
-  m_Center: {x: 2.5, y: 3.5, z: 0}
 --- !u!1001 &96144646242594784
 PrefabInstance:
   m_ObjectHideFlags: 0
