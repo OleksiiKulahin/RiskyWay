@@ -150,6 +150,9 @@ MonoBehaviour:
   ColliderRotationEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  ColliderHighGroundEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2156633137073707518
 GameObject:
   m_ObjectHideFlags: 0

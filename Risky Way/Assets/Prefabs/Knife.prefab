@@ -110,10 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd982166af02bc419792f149ba90a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedTransverse: 10
-  speedLengthwise: 10
+  pause: 0
+  speed: 12
   _camera: {fileID: 0}
   _knifeCenter: {fileID: 0}
+  lifes: 3
 --- !u!136 &-5278512246065534571
 CapsuleCollider:
   m_ObjectHideFlags: 0

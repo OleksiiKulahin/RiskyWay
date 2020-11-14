@@ -88,6 +88,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: -5258195819079059151}
+--- !u!114 &2976990938378909179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244150380732713367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22ab12b19c8c7754484ead88aad585bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentChunk: {fileID: -5258195819079059151}
 --- !u!1 &8274932215007188638
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +260,20 @@ MonoBehaviour:
   ColliderRotationEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  ColliderHighGroundEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5258195819079059151}
+        m_MethodName: onColliderHighGroundEnterEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &96144646242594784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,11 +491,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockHigh
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
 --- !u!4 &2416031535769704048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3640230277631338344, guid: 851880d15b9906e4c810041cc0fee1e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1370156170566152472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6244150380732713367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5018250745893763215, guid: 851880d15b9906e4c810041cc0fee1e8,
     type: 3}
   m_PrefabInstance: {fileID: 1370156170566152472}
   m_PrefabAsset: {fileID: 0}
@@ -763,6 +807,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockHigh (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: parentChunk
+      value: 
+      objectReference: {fileID: -5258195819079059151}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
@@ -1139,6 +1198,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockHigh (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: parentChunk
+      value: 
+      objectReference: {fileID: -5258195819079059151}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
 --- !u!4 &7742176666628814900 stripped
@@ -1513,6 +1582,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlockHigh (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: parentChunk
+      value: 
+      objectReference: {fileID: -5258195819079059151}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}

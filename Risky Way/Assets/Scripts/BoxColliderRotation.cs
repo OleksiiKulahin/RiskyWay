@@ -7,8 +7,7 @@ public class BoxColliderRotation : MonoBehaviour
     public Chunk parentChunk;
     public void OnTriggerEnter(Collider collider)
     {
-        BoxCollider boxCollider = this.GetComponent<BoxCollider>();
-        boxCollider.enabled = false; 
+        GetComponent<BoxCollider>().enabled = false; 
         parentChunk.ColliderRotationEnterEvent.Invoke();
     }
 }
