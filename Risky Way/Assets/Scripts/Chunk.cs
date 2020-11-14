@@ -18,6 +18,7 @@ public class Chunk : MonoBehaviour
     public UnityEvent ColliderLavaEnterEvent;
     public UnityEvent ColliderLavaExitEvent;
     public UnityEvent ColliderRotationEnterEvent;
+    //public UnityEvent ColliderRotationEnterEvent;
 
 
     void Start()
@@ -67,10 +68,11 @@ public class Chunk : MonoBehaviour
             if (tag == "Finish")
             {
                 _knifeController.setPause(true);
-                _UIManager._finishScreen = true;
+                _UIManager.finishScreen = true;
             }
         }
     }
+
 
     public void onColliderLavaEnterEvent()
     {
@@ -80,6 +82,7 @@ public class Chunk : MonoBehaviour
                 =new Vector3(_knifeController._knifeCenter.transform.position.x,
                 _knifeController._knifeCenter.transform.position.y-3,
                 _knifeController._knifeCenter.transform.position.z);
+            _knifeController.lifes--;
         }
     }
 

@@ -1,10 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BoxColliderChunk
+    - BoxColliderLava
+    - BoxColliderRotation
     - Chunk
     - ChunkPlacer
     - KnifeController
-    - LoadingBar
+    - LevelManager
+    - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
@@ -14,9 +18,11 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/MainScene.unity:
     - Class: 1
@@ -48,24 +54,38 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11246}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11446}
+      Script: {instanceID: 11334}
     - Class: 114
-      Script: {instanceID: 11838}
+      Script: {instanceID: 11462}
     - Class: 114
-      Script: {instanceID: 11980}
+      Script: {instanceID: 11502}
     - Class: 114
-      Script: {instanceID: 12636}
+      Script: {instanceID: 11598}
     - Class: 114
-      Script: {instanceID: 12706}
+      Script: {instanceID: 11890}
     - Class: 114
-      Script: {instanceID: 12826}
+      Script: {instanceID: 12032}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 12058}
+    - Class: 114
+      Script: {instanceID: 12278}
+    - Class: 114
+      Script: {instanceID: 12688}
+    - Class: 114
+      Script: {instanceID: 12758}
+    - Class: 114
+      Script: {instanceID: 12800}
+    - Class: 114
+      Script: {instanceID: 12880}
     - Class: 114
       Script: {instanceID: 13062}
+    - Class: 114
+      Script: {instanceID: 13114}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 134
       Script: {instanceID: 0}
@@ -98,6 +118,12 @@ ScriptsOnlyBuild:
     className: TMP_SelectionCaret
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LevelManager
+  - hash:
+      serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -108,12 +134,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Dropdown
-  - hash:
-      serializedVersion: 2
-      Hash: 5bddb32bcb848f51c6efb9a0b86ba855
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: simplerotate
   - hash:
       serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
@@ -188,6 +208,12 @@ ScriptsOnlyBuild:
     className: GridLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 1d465b48f840aef35567dafeed0358af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoxColliderChunk
+  - hash:
+      serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -218,12 +244,6 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: loadingbar
-  - hash:
-      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -248,12 +268,6 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 5bddb32bcb848f51c6efb9a0b86ba855
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: rotatetotate
-  - hash:
-      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -264,12 +278,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
-  - hash:
-      serializedVersion: 2
-      Hash: abb74232924aeae3cb0affcdf05292df
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Loading
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -302,10 +310,16 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 710465c534d77aca263145a2a3cbbcfb
+      Hash: 8e547310c74b674705952c4c475b41c7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: KnifeController
+  - hash:
+      serializedVersion: 2
+      Hash: 1d465b48f840aef35567dafeed0358af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoxColliderRotation
   - hash:
       serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
@@ -330,12 +344,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
-  - hash:
-      serializedVersion: 2
-      Hash: 316e863320b8c87159004b8b8d6eeace
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: loadingtext
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -410,7 +418,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 827a4e8c09be3267d563a653547f7085
+      Hash: 2954e68347022e5a6264007395f27516
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChunkPlacer
@@ -440,10 +448,16 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 1d465b48f840aef35567dafeed0358af
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: LoadingBar
+    className: BoxColliderLava
+  - hash:
+      serializedVersion: 2
+      Hash: e0d4f2bbf8b75651c100a38844902fb5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIManager
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -470,12 +484,6 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: loadingcolorful
-  - hash:
-      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -494,7 +502,7 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
-      Hash: 5435e2aea37d306dc9875b9345109f33
+      Hash: 382211100eef72112c7a351fcfa6d073
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Chunk
@@ -534,12 +542,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: 5bddb32bcb848f51c6efb9a0b86ba855
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SimpleLoading
   - hash:
       serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24

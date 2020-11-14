@@ -17,6 +17,7 @@ public class KnifeController : MonoBehaviour
     private Vector3 _defaultCameraPosition;
     private Quaternion _defaultCameraRotation;
     private Quaternion _direction;
+    private UIManager _UIManager;
 
     public int lifes;
 
@@ -35,6 +36,7 @@ public class KnifeController : MonoBehaviour
         _rigidbodyCenter = _knifeCenter.GetComponent<Rigidbody>();
         _transformCenter = _knifeCenter.GetComponent<Transform>();
         _colliderCenter = _knifeCenter.GetComponent<CapsuleCollider>();
+        _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         setStartSettings();
     }
@@ -123,11 +125,16 @@ public class KnifeController : MonoBehaviour
         else
         {
             _rigidbodyCenter.velocity = new Vector3(0, 0, 0);
-        }
-        if (pause)
-        {
             _transformCamera.RotateAround(_transformKnife.position, Vector3.up, 30 * Time.deltaTime);
         }
+
+        if (lifes<0)
+        {
+            _UIManager.loseScreen = true;
+            pause = true;
+        }
+
+        Debug.Log(lifes);
     }
 
     public void changeDirection(int angle, Transform begin, Transform end)

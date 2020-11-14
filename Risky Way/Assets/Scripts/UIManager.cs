@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public bool _finishScreen;
+    public bool finishScreen;
+    public bool loseScreen;
     private GameObject nextButtonObj;
     private GameObject startButtonObj;
+    private GameObject retryButtonObj;
     private Image _loadingBar;
     private Image _staticBar;
     private Image _currentLevelImage;
     private Image _finishImage;
     private Button _nextButton;
     private Button _startButton;
+    private Button _retryButton;
     private Text _currentLevel;
     private ChunkPlacer _chunkPlacer;
     private Canvas _canvas;
@@ -22,13 +25,20 @@ public class UIManager : MonoBehaviour
     private LevelManager _levelManager;
     void Start()
     {
-        _finishScreen = false;
+        finishScreen = false;
+        loseScreen = false;
+
+        nextButtonObj = GameObject.Find("NextButton");
+        startButtonObj = GameObject.Find("StartButton");
+        retryButtonObj = GameObject.Find("RetryButton"); 
+        
         _loadingBar = GameObject.Find("LoadingBar").GetComponent<Image>();
         _staticBar = GameObject.Find("StaticBar").GetComponent<Image>();
         _currentLevelImage = GameObject.Find("CurrentLevelImage").GetComponent<Image>();
         _finishImage = GameObject.Find("FinishImage").GetComponent<Image>();
-        _nextButton = GameObject.Find("NextButton").GetComponent<Button>();
-        _startButton = GameObject.Find("StartButton").GetComponent<Button>();
+        _nextButton = nextButtonObj.GetComponent<Button>();
+        _startButton = startButtonObj.GetComponent<Button>();
+        _retryButton = retryButtonObj.GetComponent<Button>();
 
         _currentLevel = GameObject.Find("CurrentLevel").GetComponent<Text>();
         _chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
@@ -36,8 +46,6 @@ public class UIManager : MonoBehaviour
         _rtCanvas = _canvas.GetComponent(typeof(RectTransform)) as RectTransform;
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
         _levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-        nextButtonObj = GameObject.Find("NextButton");
-        startButtonObj = GameObject.Find("StartButton");
     }
 
     void Update()
@@ -67,15 +75,19 @@ public class UIManager : MonoBehaviour
         _startButton.transform.localScale
             = new Vector3((_rtCanvas.rect.width) / (230),
             (_rtCanvas.rect.width) / (230), 1);
+        _retryButton.transform.localScale
+            = new Vector3((_rtCanvas.rect.width) / (230),
+            (_rtCanvas.rect.width) / (230), 1);
 
         _loadingBar.fillAmount = (float)_chunkPlacer.traversedChunks/ (float)_chunkPlacer.countChunks;
-        nextButtonObj.SetActive(_finishScreen);
+        nextButtonObj.SetActive(finishScreen);
+        retryButtonObj.SetActive(loseScreen);
 }
     public void onFinishButton()
     {        
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
         {
-            _finishScreen = false;
+            finishScreen = false;
             _knifeController.setStartSettings();
             _chunkPlacer.startSettings();
             _levelManager.levelUp();
@@ -83,7 +95,7 @@ public class UIManager : MonoBehaviour
         }
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
         {
-            _finishScreen = false;
+            finishScreen = false;
             _chunkPlacer.startSettings();
             _knifeController.setStartSettings();
             _levelManager.levelUp();
@@ -101,5 +113,14 @@ public class UIManager : MonoBehaviour
         {
             _knifeController.pause = false;
         }
+    }
+
+    public void onRetryButton()
+    {
+        loseScreen = false;
+        _knifeController.setStartSettings();
+        _chunkPlacer.restartSettings();
+        retryButtonObj.SetActive(false);
+        startButtonObj.SetActive(true);
     }
 }
