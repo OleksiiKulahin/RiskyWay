@@ -150,6 +150,9 @@ MonoBehaviour:
   ColliderRotationEnterEvent:
     m_PersistentCalls:
       m_Calls: []
+  ColliderHighGroundEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7090986093521276368
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +473,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9222232108532737934}
     m_Modifications:
+    - target: {fileID: -1372356633147702744, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: chanceOfStaying
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3640230277631338344, guid: 851880d15b9906e4c810041cc0fee1e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2420,6 +2428,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9222232108532737934}
     m_Modifications:
+    - target: {fileID: -1372356633147702744, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: chanceOfStaying
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3640230277631338344, guid: 851880d15b9906e4c810041cc0fee1e8,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3898365703162446283}
   - component: {fileID: 5730507993503081814}
   - component: {fileID: 5105067244240219914}
+  - component: {fileID: -1372356633147702744}
   m_Layer: 0
   m_Name: BlockHigh
   m_TagString: Untagged
@@ -107,3 +108,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentChunk: {fileID: 0}
+--- !u!114 &-1372356633147702744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018250745893763215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e5fecb4dbb09d49aa312c1e095b39e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceOfStaying: 0.8

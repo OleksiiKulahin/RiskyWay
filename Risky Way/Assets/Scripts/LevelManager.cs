@@ -17,16 +17,11 @@ public class LevelManager : MonoBehaviour
         _currentLevel = GameObject.Find("CurrentLevel").GetComponent<Text>();
         _level = 1;
     }
-
-    void Update()
-    {
-
-    }
     public void levelUp()
     {
         _level++;
         _currentLevel.text = _level.ToString();
-        //тут увеличение сложности      
+        //тут будет увеличение сложности      
 
     }
 }

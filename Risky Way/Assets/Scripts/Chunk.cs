@@ -29,34 +29,6 @@ public class Chunk : MonoBehaviour
         _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
-    void Update()
-    {
-
-    }
-
-    /*private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.tag == "Player"&& roadRotation!=0)
-        {
-            BoxCollider boxCollider= this.GetComponent<BoxCollider>();
-            boxCollider.enabled = false;
-            _knifeController.changeDirection(roadRotation, begin,end);
-        }
-    }*/
-
-    /*private void OnTriggerExit(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            _chunkPlacer.setTraversedChunks();
-        }
-        if (collider.tag == "Player"&&tag=="Finish")
-        {
-            _knifeController.setPause(true);
-            _UIManager._finishScreen = true;
-        }
-    }*/
-
     public void onColliderChunkExitEvent()
     {
         if (ColliderChunkExitEvent!=null)
@@ -69,7 +41,6 @@ public class Chunk : MonoBehaviour
             }
         }
     }
-
 
     public void onColliderLavaEnterEvent()
     {

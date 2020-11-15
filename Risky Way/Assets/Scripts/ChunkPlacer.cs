@@ -8,6 +8,7 @@ public class ChunkPlacer : MonoBehaviour
     public int countChunks;
     public int traversedChunks;
     public int spawnDistance;
+    private int totalSpawnedChunks;
     public GameObject road;
     public GameObject knifeCenter;
     public Chunk[] chunkPrefabs;
@@ -16,8 +17,6 @@ public class ChunkPlacer : MonoBehaviour
     private List<Chunk> _generatedChunks;
     private Quaternion _direction;
     private UIManager _UIManager;
-
-    private int totalSpawnedChunks;
 
     void Start()
     {
@@ -37,7 +36,6 @@ public class ChunkPlacer : MonoBehaviour
     public void iterateTraversedChunks()
     {
         traversedChunks++;
-        //Debug.Log(traversedChunks);
     }
 
     private void generateRoad()
@@ -51,14 +49,7 @@ public class ChunkPlacer : MonoBehaviour
             _generatedChunks[UnityEngine.Random.Range(0, _generatedChunks.Count)] 
                 = chunkPrefabs[UnityEngine.Random.Range(chunkPrefabs.Length - 2, chunkPrefabs.Length)];
         }
-
-        /*for (int i = 0; i < countChunks; i++)
-        {
-            _generatedChunks[i] = chunkPrefabs[2];
-        }*/
-
         _generatedChunks[_generatedChunks.Count-1] = chunkPrefabs[chunkPrefabs.Length - 3];
-        //_generatedChunks[5] = chunkPrefabs[chunkPrefabs.Length - 2];
         _generatedChunks[_generatedChunks.Count-2] = chunkPrefabs[chunkPrefabs.Length - 5];
     }
 
@@ -118,8 +109,6 @@ public class ChunkPlacer : MonoBehaviour
 
     public void startSettings()
     {
-
-
         traversedChunks = 1;
         totalSpawnedChunks = 1;
 

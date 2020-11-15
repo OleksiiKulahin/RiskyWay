@@ -95,7 +95,7 @@ public class KnifeController : MonoBehaviour
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
                 _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
                     _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0,0, _transformKnife.rotation.z);
+                _transformKnife.rotation = Quaternion.Euler(0 - 90, 0, _transformKnife.rotation.z);
             }
             if (_direction.eulerAngles.y > 89 && _direction.eulerAngles.y < 91)
             {
@@ -103,7 +103,7 @@ public class KnifeController : MonoBehaviour
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.x);
                 _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
                     _defaultCameraRotation.eulerAngles.y+270, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0, 90, _transformKnife.rotation.z);
+                _transformKnife.rotation = Quaternion.Euler(0 - 90, 90, _transformKnife.rotation.z);
             }
             if (_direction.eulerAngles.y > 179 && _direction.eulerAngles.y < 181)
             {
@@ -111,7 +111,7 @@ public class KnifeController : MonoBehaviour
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.z);
                 _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
                     _defaultCameraRotation.eulerAngles.y+180, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0, 180, _transformKnife.rotation.z);
+                _transformKnife.rotation = Quaternion.Euler(0 - 90, 180, _transformKnife.rotation.z);
             }
             if (_direction.eulerAngles.y > 269 && _direction.eulerAngles.y < 271)
             {
@@ -119,7 +119,7 @@ public class KnifeController : MonoBehaviour
                     _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.x);
                 _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
                     _defaultCameraRotation.eulerAngles.y+90, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0, 270, _transformKnife.rotation.z);
+                _transformKnife.rotation = Quaternion.Euler(0 - 90, 270, _transformKnife.rotation.z);
             }
         }
         else
@@ -133,16 +133,11 @@ public class KnifeController : MonoBehaviour
             _UIManager.loseScreen = true;
             pause = true;
         }
-
-        Debug.Log(lifes);
     }
 
     public void changeDirection(int angle, Transform begin, Transform end)
     {
         _direction = Quaternion.Euler(_direction.eulerAngles.x, _direction.eulerAngles.y+ angle, _direction.eulerAngles.z);
-        
-        /*float b = (float)Math.Sqrt((Math.Pow(end.position.x - begin.position.x, 2)
-            + Math.Pow(end.position.z - begin.position.z, 2)));*/
     }
 
     public void setStartSettings()
@@ -153,13 +148,12 @@ public class KnifeController : MonoBehaviour
         _UIManager.updateLifes();
         _direction = Quaternion.Euler(0, 0, 0);
         _transformCenter.position = new Vector3(0, 5, 0);
-
         _transformKnife.position = new Vector3(0, 5, 0);
         _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
         _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
             _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
-        _transformKnife.rotation = Quaternion.Euler(0, 0, _transformKnife.rotation.z);
+        _transformKnife.rotation = Quaternion.Euler(-90, 0, _transformKnife.rotation.z);
     }
 
 }

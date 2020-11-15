@@ -49,8 +49,6 @@ public class UIManager : MonoBehaviour
         _rtCanvas = _canvas.GetComponent(typeof(RectTransform)) as RectTransform;
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
         _levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
-
-
     }
 
     void Update()
@@ -101,13 +99,10 @@ public class UIManager : MonoBehaviour
         {
             if (i<lifes)
             {
-                lifesList[i].enabled = true; 
                 lifesList[i].color = Color.red;
-
             }
             else
             {
-                //lifesList[i].enabled = false;
                 lifesList[i].color = Color.black;
             }
         }
