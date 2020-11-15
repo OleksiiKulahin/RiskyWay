@@ -128,7 +128,7 @@ public class KnifeController : MonoBehaviour
             _transformCamera.RotateAround(_transformKnife.position, Vector3.up, 30 * Time.deltaTime);
         }
 
-        if (lifes<0)
+        if (lifes<1)
         {
             _UIManager.loseScreen = true;
             pause = true;
@@ -150,6 +150,7 @@ public class KnifeController : MonoBehaviour
         pause = true;
         speed = 12;
         lifes = 3;
+        _UIManager.updateLifes();
         _direction = Quaternion.Euler(0, 0, 0);
         _transformCenter.position = new Vector3(0, 5, 0);
 

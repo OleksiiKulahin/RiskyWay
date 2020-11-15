@@ -16,7 +16,7 @@ public class BoxColliderLava : MonoBehaviour
     public void OnTriggerEnter(Collider collider)
     {
         parentChunk.ColliderLavaEnterEvent.Invoke();
-        if (GameObject.Find("Knife").GetComponent<KnifeController>().lifes < 0)
+        if (GameObject.Find("Knife").GetComponent<KnifeController>().lifes < 1)
         {
             deadInLava = true;
         }

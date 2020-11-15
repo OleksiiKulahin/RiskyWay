@@ -7,9 +7,11 @@ public class UIManager : MonoBehaviour
 {
     public bool finishScreen;
     public bool loseScreen;
+    public List<Image> lifesList;
     private GameObject nextButtonObj;
     private GameObject startButtonObj;
     private GameObject retryButtonObj;
+    private GameObject lifesObj;
     private Image _loadingBar;
     private Image _staticBar;
     private Image _currentLevelImage;
@@ -30,7 +32,8 @@ public class UIManager : MonoBehaviour
 
         nextButtonObj = GameObject.Find("NextButton");
         startButtonObj = GameObject.Find("StartButton");
-        retryButtonObj = GameObject.Find("RetryButton"); 
+        retryButtonObj = GameObject.Find("RetryButton");
+        lifesObj = GameObject.Find("Lifes"); 
         
         _loadingBar = GameObject.Find("LoadingBar").GetComponent<Image>();
         _staticBar = GameObject.Find("StaticBar").GetComponent<Image>();
@@ -46,6 +49,8 @@ public class UIManager : MonoBehaviour
         _rtCanvas = _canvas.GetComponent(typeof(RectTransform)) as RectTransform;
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
         _levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+
+
     }
 
     void Update()
@@ -55,6 +60,8 @@ public class UIManager : MonoBehaviour
         _currentLevelImage.transform.position = new Vector3(_rtCanvas.rect.width/8, _rtCanvas.rect.height - _rtCanvas.rect.height/10);        
         _finishImage.transform.position = new Vector3(_rtCanvas.rect.width - _rtCanvas.rect.width / 8, _rtCanvas.rect.height - _rtCanvas.rect.height / 10);
         _currentLevel.transform.position = _currentLevelImage.transform.position;
+        lifesObj.transform.position = new Vector3(_staticBar.transform.position.x- _rtCanvas.rect.width/10,
+            _staticBar.transform.position.y+ _rtCanvas.rect.height / 25);
 
         _staticBar.transform.localScale = new Vector3((_rtCanvas.rect.width) / (_staticBar.rectTransform.rect.width * 1.6f),
             (_rtCanvas.rect.height) / (_staticBar.rectTransform.rect.height * 16), 1);
@@ -78,11 +85,34 @@ public class UIManager : MonoBehaviour
         _retryButton.transform.localScale
             = new Vector3((_rtCanvas.rect.width) / (230),
             (_rtCanvas.rect.width) / (230), 1);
+        lifesObj.transform.localScale
+            = new Vector3((_rtCanvas.rect.width) / (230),
+            (_rtCanvas.rect.width) / (230), 1);
 
         _loadingBar.fillAmount = (float)_chunkPlacer.traversedChunks/ (float)_chunkPlacer.countChunks;
         nextButtonObj.SetActive(finishScreen);
         retryButtonObj.SetActive(loseScreen);
-}
+    }
+
+    public void updateLifes()
+    {
+        int lifes = _knifeController.lifes;
+        for (int i = 0; i < 3; i++)
+        {
+            if (i<lifes)
+            {
+                lifesList[i].enabled = true; 
+                lifesList[i].color = Color.red;
+
+            }
+            else
+            {
+                //lifesList[i].enabled = false;
+                lifesList[i].color = Color.black;
+            }
+        }
+    }
+
     public void onFinishButton()
     {        
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)

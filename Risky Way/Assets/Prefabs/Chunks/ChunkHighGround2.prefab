@@ -361,7 +361,12 @@ PrefabInstance:
     - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
         type: 3}
       propertyPath: m_Center.z
-      value: -0.1
+      value: -0.042
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.86
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
@@ -971,7 +976,12 @@ PrefabInstance:
     - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.1
+      value: 0.042
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.86
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
@@ -1008,7 +1018,7 @@ PrefabInstance:
     - target: {fileID: 2650489547190527909, guid: d7be3de292fbad14b905fc27c4ce2880,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2650489547190527909, guid: d7be3de292fbad14b905fc27c4ce2880,
         type: 3}
@@ -2109,6 +2119,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 5730507993503081814, guid: 851880d15b9906e4c810041cc0fee1e8,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5105067244240219914, guid: 851880d15b9906e4c810041cc0fee1e8, type: 3}
