@@ -145,13 +145,15 @@ public class KnifeController : MonoBehaviour
         speed = 12;
         lifes = 3;
         _direction = Quaternion.Euler(0, 0, 0);
-        _transformCenter.position = new Vector3(0, 5, 0);
-        _transformKnife.position = new Vector3(0, 5, 0);
+        GameObject.Find("KnifeTrail").GetComponent<TrailRenderer>().enabled = false;
+        _transformCenter.position = new Vector3(2.5f, 5, 0);
+        _transformKnife.position = new Vector3(2.5f, 5, 0);
         _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
         _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
             _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
         _transformKnife.rotation = Quaternion.Euler(-90, 0, _transformKnife.rotation.z);
         _UIManager.updateLifes();
+        GameObject.Find("KnifeTrail").GetComponent<TrailRenderer>().enabled = true;
     }
 }

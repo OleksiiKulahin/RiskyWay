@@ -788,6 +788,11 @@ PrefabInstance:
       propertyPath: _knifeCenter
       value: 
       objectReference: {fileID: 1747276291}
+    - target: {fileID: 4957155522203001045, guid: 4593fe2c1c40940489d5e5fee1bb9033,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5046621867958247456, guid: 4593fe2c1c40940489d5e5fee1bb9033,
         type: 3}
       propertyPath: m_Name
