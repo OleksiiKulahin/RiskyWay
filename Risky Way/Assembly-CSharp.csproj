@@ -64,15 +64,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AnimationScript.cs" />
-    <Compile Include="Assets\Scripts\BoxColliders\BoxColliderChunk.cs" />
-    <Compile Include="Assets\Scripts\BoxColliders\BoxColliderHighGround.cs" />
-    <Compile Include="Assets\Scripts\BoxColliders\BoxColliderLava.cs" />
-    <Compile Include="Assets\Scripts\BoxColliders\BoxColliderRotation.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderChunk.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderHighGround.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderLava.cs" />
+    <Compile Include="Assets\Scripts\BoxColliderRotation.cs" />
     <Compile Include="Assets\Scripts\Chunk.cs" />
     <Compile Include="Assets\Scripts\ChunkPlacer.cs" />
     <Compile Include="Assets\Scripts\DestroyWithChance.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
     <Compile Include="Assets\Scripts\KnifeController.cs" />
     <Compile Include="Assets\Scripts\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\SphereColliderItem.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Programs/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

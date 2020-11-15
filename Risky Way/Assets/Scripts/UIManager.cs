@@ -94,7 +94,8 @@ public class UIManager : MonoBehaviour
 
     public void updateLifes()
     {
-        int lifes = _knifeController.lifes;
+        int lifes = GameObject.Find("Knife").GetComponent<KnifeController>().lifes;
+            
         for (int i = 0; i < 3; i++)
         {
             if (i<lifes)

@@ -7,6 +7,7 @@ public class KnifeController : MonoBehaviour
     private float _moveInput;
     public float speed;
     private int _width;
+    public int lifes;
     public GameObject _camera;
     public GameObject _knifeCenter; 
     private Transform _transformKnife;
@@ -19,7 +20,6 @@ public class KnifeController : MonoBehaviour
     private Quaternion _direction;
     private UIManager _UIManager;
 
-    public int lifes;
 
     public void setPause(bool pause)
     {
@@ -37,7 +37,6 @@ public class KnifeController : MonoBehaviour
         _transformCenter = _knifeCenter.GetComponent<Transform>();
         _colliderCenter = _knifeCenter.GetComponent<CapsuleCollider>();
         _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-
         setStartSettings();
     }
 
@@ -145,7 +144,6 @@ public class KnifeController : MonoBehaviour
         pause = true;
         speed = 12;
         lifes = 3;
-        _UIManager.updateLifes();
         _direction = Quaternion.Euler(0, 0, 0);
         _transformCenter.position = new Vector3(0, 5, 0);
         _transformKnife.position = new Vector3(0, 5, 0);
@@ -154,6 +152,6 @@ public class KnifeController : MonoBehaviour
         _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
             _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
         _transformKnife.rotation = Quaternion.Euler(-90, 0, _transformKnife.rotation.z);
+        _UIManager.updateLifes();
     }
-
 }
