@@ -251,5 +251,9 @@ MonoBehaviour:
   speed: 10
   lifes: 3
   crystals: 0
+  invulnerabilityTime: 0
   _camera: {fileID: 0}
   _knifeCenter: {fileID: 0}
+  defaultMaterial: {fileID: 2100000, guid: 265a91ea59fb28b4c934f6148325254c, type: 2}
+  invulnerableMaterial: {fileID: 2100000, guid: 3dfb626752f52e34f8afb4b8c3bb6de6,
+    type: 2}

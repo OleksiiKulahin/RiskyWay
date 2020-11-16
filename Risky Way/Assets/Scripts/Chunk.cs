@@ -50,8 +50,7 @@ public class Chunk : MonoBehaviour
                 =new Vector3(_knifeController._knifeCenter.transform.position.x,
                 _knifeController._knifeCenter.transform.position.y-3,
                 _knifeController._knifeCenter.transform.position.z);
-            if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other){Handheld.Vibrate();}
-            _knifeController.lifes--;
+            _knifeController.loseLife();
             _UIManager.updateLifes();
         }
     }
@@ -78,8 +77,7 @@ public class Chunk : MonoBehaviour
     {
         if (ColliderHighGroundEnterEvent != null)
         {
-            if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other) { Handheld.Vibrate(); }
-            _knifeController.lifes--;
+            _knifeController.loseLife();
             _UIManager.updateLifes();
         }
     }

@@ -9,6 +9,7 @@ public class KnifeController : MonoBehaviour
     private int _width;
     public int lifes;
     public int crystals;
+    public float invulnerabilityTime;
     public GameObject _camera;
     public GameObject _knifeCenter; 
     private Transform _transformKnife;
@@ -20,7 +21,8 @@ public class KnifeController : MonoBehaviour
     private Quaternion _defaultCameraRotation;
     private Quaternion _direction;
     private UIManager _UIManager;
-
+    public Material defaultMaterial;
+    public Material invulnerableMaterial;
 
     public void setPause(bool pause)
     {
@@ -134,6 +136,18 @@ public class KnifeController : MonoBehaviour
             _UIManager.loseScreen = true;
             pause = true;
         }
+        if (invulnerabilityTime > 0)
+        {
+            invulnerabilityTime -= Time.deltaTime;
+            GetComponent<Renderer>().material = invulnerableMaterial;
+            Color tempColor = invulnerableMaterial.color;
+            tempColor.a = (float)Math.Sin(30*invulnerabilityTime);
+            invulnerableMaterial.color = tempColor;
+        }
+        else
+        {
+            GetComponent<Renderer>().material = defaultMaterial;
+        }
     }
 
 
@@ -141,6 +155,15 @@ public class KnifeController : MonoBehaviour
     {
         crystals++;
         _UIManager.updateCrystals();
+    }
+    public void loseLife()
+    {
+        if (invulnerabilityTime<=0)
+        {
+            lifes--;
+            if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other) { Handheld.Vibrate(); }
+            invulnerabilityTime = 1f;
+        }
     }
     public void changeDirection(int angle, Transform begin, Transform end)
     {
