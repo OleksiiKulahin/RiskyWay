@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class Item : MonoBehaviour
@@ -22,14 +20,12 @@ public class Item : MonoBehaviour
             {
                 if (_knifeController.lifes < 3)
                 {
-                    _knifeController.lifes++;
-                    _UIManager.updateLifes();
+                    _knifeController.addLife();
                 }
             }
             if (name.Contains("Crystal"))
             {
                 _knifeController.addCrystal();
-                Debug.Log(_knifeController.crystals);
             }
 
         }

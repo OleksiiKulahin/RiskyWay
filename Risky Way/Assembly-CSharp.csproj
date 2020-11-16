@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AnimationScript.cs" />
+    <Compile Include="Assets\Scripts\AnimationItem.cs" />
     <Compile Include="Assets\Scripts\BoxColliderChunk.cs" />
     <Compile Include="Assets\Scripts\BoxColliderHighGround.cs" />
     <Compile Include="Assets\Scripts\BoxColliderLava.cs" />

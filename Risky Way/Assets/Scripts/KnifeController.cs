@@ -10,6 +10,7 @@ public class KnifeController : MonoBehaviour
     public int lifes;
     public int crystals;
     public float invulnerabilityTime;
+    public float stabbingTime;
     public GameObject _camera;
     public GameObject _knifeCenter; 
     private Transform _transformKnife;
@@ -138,23 +139,45 @@ public class KnifeController : MonoBehaviour
         }
         if (invulnerabilityTime > 0)
         {
-            invulnerabilityTime -= Time.deltaTime;
-            GetComponent<Renderer>().material = invulnerableMaterial;
-            Color tempColor = invulnerableMaterial.color;
-            tempColor.a = (float)Math.Sin(30*invulnerabilityTime);
-            invulnerableMaterial.color = tempColor;
+            knifeFlickering();
         }
         else
         {
             GetComponent<Renderer>().material = defaultMaterial;
         }
+        if (stabbingTime>0)
+        {
+            knifeStabbing();
+        }
     }
 
+    public void knifeStabbing()
+    {
+        stabbingTime -= 8*Time.deltaTime;
+        _transformKnife.position = new Vector3(_transformKnife.position.x,
+            _transformKnife.position.y- stabbingTime, _transformKnife.position.z);
+        Debug.Log("stabbingKnife");
 
+    }
+    public void knifeFlickering()
+    {
+        invulnerabilityTime -= Time.deltaTime;
+        GetComponent<Renderer>().material = invulnerableMaterial;
+        Color tempColor = invulnerableMaterial.color;
+        tempColor.a = (float)Math.Sin(30 * invulnerabilityTime);
+        invulnerableMaterial.color = tempColor;
+    }
     public void addCrystal()
     {
+        stabbingTime = 1f;
         crystals++;
         _UIManager.updateCrystals();
+    }
+    public void addLife()
+    {
+        stabbingTime = 1f;
+        lifes++;
+        _UIManager.updateLifes();
     }
     public void loseLife()
     {
@@ -176,8 +199,8 @@ public class KnifeController : MonoBehaviour
         speed = 12;
         lifes = 3;
         _direction = Quaternion.Euler(0, 0, 0);
-        _transformCenter.position = new Vector3(2.5f, 5, 0);
-        _transformKnife.position = new Vector3(2.5f, 5, 0);
+        _transformCenter.position = new Vector3(2.5f, 5.5f, 0);
+        _transformKnife.position = new Vector3(2.5f, 5.5f, 0);
         _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
                     _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
         _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
