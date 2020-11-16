@@ -71,7 +71,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 3
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pause: 0
   speed: 10
+  lifes: 3
+  crystals: 0
   _camera: {fileID: 0}
   _knifeCenter: {fileID: 0}
-  lifes: 3

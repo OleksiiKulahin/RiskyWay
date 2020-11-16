@@ -1,13 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AnimationScript
     - BoxColliderChunk
+    - BoxColliderHighGround
     - BoxColliderLava
     - BoxColliderRotation
     - Chunk
     - ChunkPlacer
+    - DestroyWithChance
+    - Item
     - KnifeController
     - LevelManager
+    - SphereColliderItem
     - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -49,6 +54,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -58,36 +65,48 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11334}
     - Class: 114
-      Script: {instanceID: 11462}
+      Script: {instanceID: 11374}
     - Class: 114
-      Script: {instanceID: 11502}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11598}
+      Script: {instanceID: 11476}
     - Class: 114
-      Script: {instanceID: 11890}
+      Script: {instanceID: 11506}
     - Class: 114
-      Script: {instanceID: 12032}
+      Script: {instanceID: 11602}
     - Class: 114
-      Script: {instanceID: 12058}
+      Script: {instanceID: 11786}
     - Class: 114
-      Script: {instanceID: 12278}
+      Script: {instanceID: 11896}
     - Class: 114
-      Script: {instanceID: 12688}
+      Script: {instanceID: 12038}
     - Class: 114
-      Script: {instanceID: 12758}
+      Script: {instanceID: 12064}
     - Class: 114
-      Script: {instanceID: 12800}
+      Script: {instanceID: 12172}
     - Class: 114
-      Script: {instanceID: 12880}
+      Script: {instanceID: 12286}
     - Class: 114
-      Script: {instanceID: 13062}
+      Script: {instanceID: 12696}
     - Class: 114
-      Script: {instanceID: 13114}
+      Script: {instanceID: 12698}
+    - Class: 114
+      Script: {instanceID: 12768}
+    - Class: 114
+      Script: {instanceID: 12810}
+    - Class: 114
+      Script: {instanceID: 12890}
+    - Class: 114
+      Script: {instanceID: 13072}
+    - Class: 114
+      Script: {instanceID: 13124}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 134
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -136,6 +155,12 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 065dfb11635b155b103aa81ffc1f1da0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Item
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -170,6 +195,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Scrollbar
+  - hash:
+      serializedVersion: 2
+      Hash: 1d465b48f840aef35567dafeed0358af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BoxColliderHighGround
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -268,6 +299,12 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: d6708de382d0bbc27737a046238eec40
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SphereColliderItem
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -310,7 +347,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 8e547310c74b674705952c4c475b41c7
+      Hash: b0913903d6f37f1849f9fbdf73e9a59a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: KnifeController
@@ -338,6 +375,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: b3b88a83977f0095ee5fd9765e4de1e8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationScript
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -418,6 +461,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: da91a82b4130abfcd4b847b1adb1b6c1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyWithChance
+  - hash:
+      serializedVersion: 2
       Hash: 2954e68347022e5a6264007395f27516
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -454,7 +503,7 @@ ScriptsOnlyBuild:
     className: BoxColliderLava
   - hash:
       serializedVersion: 2
-      Hash: e0d4f2bbf8b75651c100a38844902fb5
+      Hash: 63d5acfe132fb7ea6126a3052d0133fc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -502,7 +551,7 @@ ScriptsOnlyBuild:
     className: Outline
   - hash:
       serializedVersion: 2
-      Hash: 382211100eef72112c7a351fcfa6d073
+      Hash: d84bc9386e1e1481a2712d0a0fa01949
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Chunk

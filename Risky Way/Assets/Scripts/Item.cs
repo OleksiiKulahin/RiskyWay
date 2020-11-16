@@ -18,11 +18,20 @@ public class Item : MonoBehaviour
     {
         if (ColliderItemEvent != null)
         {
-            if (_knifeController.lifes < 3)
+            if (name.Contains("Heart"))
             {
-                _knifeController.lifes++;
-                _UIManager.updateLifes();
+                if (_knifeController.lifes < 3)
+                {
+                    _knifeController.lifes++;
+                    _UIManager.updateLifes();
+                }
             }
+            if (name.Contains("Crystal"))
+            {
+                _knifeController.addCrystal();
+                Debug.Log(_knifeController.crystals);
+            }
+
         }
     }
 }

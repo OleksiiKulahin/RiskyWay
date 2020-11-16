@@ -16,10 +16,12 @@ public class UIManager : MonoBehaviour
     private Image _staticBar;
     private Image _currentLevelImage;
     private Image _finishImage;
+    private Image _crystalImage;
     private Button _nextButton;
     private Button _startButton;
     private Button _retryButton;
     private Text _currentLevel;
+    private Text _crystalsCount;
     private ChunkPlacer _chunkPlacer;
     private Canvas _canvas;
     private RectTransform _rtCanvas;
@@ -39,11 +41,13 @@ public class UIManager : MonoBehaviour
         _staticBar = GameObject.Find("StaticBar").GetComponent<Image>();
         _currentLevelImage = GameObject.Find("CurrentLevelImage").GetComponent<Image>();
         _finishImage = GameObject.Find("FinishImage").GetComponent<Image>();
+        _crystalImage = GameObject.Find("CrystalsImage").GetComponent<Image>();
         _nextButton = nextButtonObj.GetComponent<Button>();
         _startButton = startButtonObj.GetComponent<Button>();
         _retryButton = retryButtonObj.GetComponent<Button>();
 
         _currentLevel = GameObject.Find("CurrentLevel").GetComponent<Text>();
+        _crystalsCount = GameObject.Find("CrystalsCount").GetComponent<Text>();
         _chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
         _canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         _rtCanvas = _canvas.GetComponent(typeof(RectTransform)) as RectTransform;
@@ -59,6 +63,8 @@ public class UIManager : MonoBehaviour
         _finishImage.transform.position = new Vector3(_rtCanvas.rect.width - _rtCanvas.rect.width / 8, _rtCanvas.rect.height - _rtCanvas.rect.height / 10);
         _currentLevel.transform.position = _currentLevelImage.transform.position;
         lifesObj.transform.position = new Vector3(_staticBar.transform.position.x- _rtCanvas.rect.width/10,
+            _staticBar.transform.position.y+ _rtCanvas.rect.height / 25);
+        _crystalImage.transform.position = new Vector3(_staticBar.transform.position.x+ _rtCanvas.rect.width/5,
             _staticBar.transform.position.y+ _rtCanvas.rect.height / 25);
 
         _staticBar.transform.localScale = new Vector3((_rtCanvas.rect.width) / (_staticBar.rectTransform.rect.width * 1.6f),
@@ -86,6 +92,9 @@ public class UIManager : MonoBehaviour
         lifesObj.transform.localScale
             = new Vector3((_rtCanvas.rect.width) / (230),
             (_rtCanvas.rect.width) / (230), 1);
+        _crystalImage.transform.localScale
+            = new Vector3((_rtCanvas.rect.width) / (230),
+            (_rtCanvas.rect.width) / (230), 1);
 
         _loadingBar.fillAmount = (float)_chunkPlacer.traversedChunks/ (float)_chunkPlacer.countChunks;
         nextButtonObj.SetActive(finishScreen);
@@ -109,6 +118,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void updateCrystals()
+    {
+        _crystalsCount.text = _knifeController.crystals.ToString();
+    }
     public void onFinishButton()
     {        
         if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)

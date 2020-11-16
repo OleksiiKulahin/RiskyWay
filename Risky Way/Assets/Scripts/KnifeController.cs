@@ -8,6 +8,7 @@ public class KnifeController : MonoBehaviour
     public float speed;
     private int _width;
     public int lifes;
+    public int crystals;
     public GameObject _camera;
     public GameObject _knifeCenter; 
     private Transform _transformKnife;
@@ -37,6 +38,7 @@ public class KnifeController : MonoBehaviour
         _transformCenter = _knifeCenter.GetComponent<Transform>();
         _colliderCenter = _knifeCenter.GetComponent<CapsuleCollider>();
         _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        crystals = 0;
         setStartSettings();
     }
 
@@ -134,6 +136,12 @@ public class KnifeController : MonoBehaviour
         }
     }
 
+
+    public void addCrystal()
+    {
+        crystals++;
+        _UIManager.updateCrystals();
+    }
     public void changeDirection(int angle, Transform begin, Transform end)
     {
         _direction = Quaternion.Euler(_direction.eulerAngles.x, _direction.eulerAngles.y+ angle, _direction.eulerAngles.z);
@@ -145,7 +153,6 @@ public class KnifeController : MonoBehaviour
         speed = 12;
         lifes = 3;
         _direction = Quaternion.Euler(0, 0, 0);
-        GameObject.Find("KnifeTrail").GetComponent<TrailRenderer>().enabled = false;
         _transformCenter.position = new Vector3(2.5f, 5, 0);
         _transformKnife.position = new Vector3(2.5f, 5, 0);
         _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
@@ -154,6 +161,5 @@ public class KnifeController : MonoBehaviour
             _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
         _transformKnife.rotation = Quaternion.Euler(-90, 0, _transformKnife.rotation.z);
         _UIManager.updateLifes();
-        GameObject.Find("KnifeTrail").GetComponent<TrailRenderer>().enabled = true;
     }
 }
