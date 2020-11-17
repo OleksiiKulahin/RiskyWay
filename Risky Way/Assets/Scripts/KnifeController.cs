@@ -4,13 +4,16 @@ using UnityEngine;
 public class KnifeController : MonoBehaviour
 {
     public bool pause;
+    public bool isRotating;
     private float _moveInput;
     public float speed;
     private int _width;
     public int lifes;
     public int crystals;
+    private float distanceToCamera;
     public float invulnerabilityTime;
     public float stabbingTime;
+    private float koeficientAngleCenter = 1.06000444f;
     public Material defaultMaterial;
     public Material invulnerableMaterial;
     public GameObject _knifeCenter;
@@ -21,8 +24,9 @@ public class KnifeController : MonoBehaviour
     private Rigidbody _rigidbodyCenter;
     private CapsuleCollider _colliderCenter;
     private Vector3 _defaultCameraPosition;
+    public Vector3 circleCenter;
     private Quaternion _defaultCameraRotation;
-    private Quaternion _direction;
+    public Quaternion _direction;
     private UIManager _UIManager;
 
     public void setPause(bool pause)
@@ -50,35 +54,36 @@ public class KnifeController : MonoBehaviour
         float shift;
         _width = Screen.width;
 
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
-        {
-            if (Input.touchCount > 0)
-            {
+        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other){
+            if (Input.touchCount > 0){
                 _moveInput = Input.GetTouch(0).position.x;
             }
         }
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
-        {
+        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows){
             _moveInput = Input.mousePosition.x;
         }
 
-
-        if (!pause)
-        {
+        if (!pause){
             shift = -1 * (_moveInput - (_width / 2)) * (4.8f / _width);
 
             _rigidbodyCenter.velocity = new Vector3(speed * (float)Math.Cos(_direction.eulerAngles.y * (Math.PI / 180)),
-                _rigidbodyCenter.velocity.y, speed * (float)Math.Sin(_direction.eulerAngles.y * (Math.PI / 180)));
+                    _rigidbodyCenter.velocity.y, speed * (float)Math.Sin(_direction.eulerAngles.y * (Math.PI / 180)));
 
-            if (shift > -2.4f && shift < 2.4f) 
-            {
+            _transformKnife.rotation = Quaternion.Euler(-90, -_direction.eulerAngles.y, _transformKnife.rotation.z);
+
+            _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
+                    _defaultCameraRotation.eulerAngles.y - _direction.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
+
+            _transformCamera.position = new Vector3(_transformCenter.position.x - distanceToCamera * (float)Math.Sin((-_direction.eulerAngles.y + 75f) * (Math.PI / 180)),
+                    _transformCamera.position.y, _transformCenter.position.z - distanceToCamera * (float)Math.Cos((-_direction.eulerAngles.y + 75f) * (Math.PI / 180)));
+
+            if (shift > -2.4f && shift < 2.4f) {
                 _transformKnife.position = new Vector3(_transformCenter.position.x+shift * (float)Math.Cos((_direction.eulerAngles.y+90) * (Math.PI / 180)),
                     _transformCenter.position.y, _transformCenter.position.z+shift * (float)Math.Sin((_direction.eulerAngles.y+90) * (Math.PI / 180)));
                 _colliderCenter.center = new Vector3(shift * (float)Math.Cos((_direction.eulerAngles.y + 90) * (Math.PI / 180)), 
                     0, shift * (float)Math.Sin((_direction.eulerAngles.y + 90) * (Math.PI / 180)));
             }
-            else
-            {
+            else{
                 if (shift <= -2.4f) {
                     _transformKnife.position = new Vector3(_transformCenter.position.x + (-2.4f) * (float)Math.Cos((_direction.eulerAngles.y + 90) * (Math.PI / 180)),
                         _transformCenter.position.y, _transformCenter.position.z + (-2.4f) * (float)Math.Sin((_direction.eulerAngles.y + 90) * (Math.PI / 180)));
@@ -91,62 +96,27 @@ public class KnifeController : MonoBehaviour
                     _colliderCenter.center = new Vector3(2.4f * (float)Math.Cos((_direction.eulerAngles.y + 90) * (Math.PI / 180)),
                             0, 2.4f * (float)Math.Sin((_direction.eulerAngles.y + 90) * (Math.PI / 180)));
                 }
-            }
-
-            if (_direction.eulerAngles.y>-1&& _direction.eulerAngles.y<1)
-            {
-                _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.x,
-                    _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.z);
-                _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
-                    _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0 - 90, 0, _transformKnife.rotation.z);
-            }
-            if (_direction.eulerAngles.y > 89 && _direction.eulerAngles.y < 91)
-            {
-                _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.z,
-                    _transformCamera.position.y, _transformCenter.position.z + _defaultCameraPosition.x);
-                _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
-                    _defaultCameraRotation.eulerAngles.y+270, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0 - 90, 90, _transformKnife.rotation.z);
-            }
-            if (_direction.eulerAngles.y > 179 && _direction.eulerAngles.y < 181)
-            {
-                _transformCamera.position = new Vector3(_transformCenter.position.x - _defaultCameraPosition.x,
-                    _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.z);
-                _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
-                    _defaultCameraRotation.eulerAngles.y+180, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0 - 90, 180, _transformKnife.rotation.z);
-            }
-            if (_direction.eulerAngles.y > 269 && _direction.eulerAngles.y < 271)
-            {
-                _transformCamera.position = new Vector3(_transformCenter.position.x + _defaultCameraPosition.z,
-                    _transformCamera.position.y, _transformCenter.position.z - _defaultCameraPosition.x);
-                _transformCamera.rotation = Quaternion.Euler(_defaultCameraRotation.eulerAngles.x,
-                    _defaultCameraRotation.eulerAngles.y+90, _defaultCameraRotation.eulerAngles.z);
-                _transformKnife.rotation = Quaternion.Euler(0 - 90, 270, _transformKnife.rotation.z);
-            }
+            }                        
+            if (!isRotating){
+                stabilizeDirection();
+            }  
         }
-        else
-        {
+        else{
             _rigidbodyCenter.velocity = new Vector3(0, 0, 0);
             _transformCamera.RotateAround(_transformKnife.position, Vector3.up, 30 * Time.deltaTime);
         }
 
-        if (lifes<1)
-        {
+        if (lifes<1){
             _UIManager.loseScreen = true;
             pause = true;
         }
-        if (invulnerabilityTime > 0)
-        {
+        if (invulnerabilityTime > 0){
             knifeFlickering();
         }
-        else
-        {
+        else{
             GetComponent<Renderer>().material = defaultMaterial;
         }
-        if (stabbingTime>0)
-        {
+        if (stabbingTime>0){
             knifeStabbing();
         }
     }
@@ -156,9 +126,8 @@ public class KnifeController : MonoBehaviour
         stabbingTime -= 8*Time.deltaTime;
         _transformKnife.position = new Vector3(_transformKnife.position.x,
             _transformKnife.position.y- stabbingTime, _transformKnife.position.z);
-        Debug.Log("stabbingKnife");
-
     }
+
     public void knifeFlickering()
     {
         invulnerabilityTime -= Time.deltaTime;
@@ -167,35 +136,62 @@ public class KnifeController : MonoBehaviour
         tempColor.a = (float)Math.Sin(30 * invulnerabilityTime);
         invulnerableMaterial.color = tempColor;
     }
+
     public void addCrystal()
     {
         stabbingTime = 1f;
         crystals++;
         _UIManager.updateCrystals();
     }
+
     public void addLife()
     {
         stabbingTime = 1f;
         lifes++;
         _UIManager.updateLifes();
     }
+
     public void loseLife()
     {
-        if (invulnerabilityTime<=0)
-        {
+        if (invulnerabilityTime<=0){
             lifes--;
             if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other) { Handheld.Vibrate(); }
             invulnerabilityTime = 1f;
             _UIManager.updateLifes();
         }
     }
-    public void changeDirection(int angle, Transform begin, Transform end)
+
+    private void FixedUpdate()
     {
-        _direction = Quaternion.Euler(_direction.eulerAngles.x, _direction.eulerAngles.y+ angle, _direction.eulerAngles.z);
+        if (isRotating){
+            _direction = Quaternion.Euler(_direction.eulerAngles.x,
+                _direction.eulerAngles.y + 90/koeficientAngleCenter * Time.deltaTime, _direction.eulerAngles.z);                        
+        }
     }
 
-    public void setStartSettings()
+
+    private void stabilizeDirection()
     {
+        if (_direction.eulerAngles.y > -20 && _direction.eulerAngles.y < 20)
+        {
+            _direction = Quaternion.Euler(_direction.eulerAngles.x, 0, _direction.eulerAngles.z);
+        }
+        if (_direction.eulerAngles.y > 70 && _direction.eulerAngles.y < 110)
+        {
+            _direction = Quaternion.Euler(_direction.eulerAngles.x, 90, _direction.eulerAngles.z);
+        }
+        if (_direction.eulerAngles.y > 160 && _direction.eulerAngles.y < 200)
+        {
+            _direction = Quaternion.Euler(_direction.eulerAngles.x, 180, _direction.eulerAngles.z);
+        }
+        if (_direction.eulerAngles.y > 250 && _direction.eulerAngles.y < 290)
+        {
+            _direction = Quaternion.Euler(_direction.eulerAngles.x, 270, _direction.eulerAngles.z);
+        }
+    }
+    public void setStartSettings()
+    {      
+
         pause = true;
         speed = 12;
         lifes = 3;
@@ -208,5 +204,8 @@ public class KnifeController : MonoBehaviour
             _defaultCameraRotation.eulerAngles.y, _defaultCameraRotation.eulerAngles.z);
         _transformKnife.rotation = Quaternion.Euler(-90, 0, _transformKnife.rotation.z);
         _UIManager.updateLifes();
+
+        distanceToCamera = (float)Math.Sqrt(Math.Pow((_transformCamera.position.x - _transformCenter.position.x), 2)
+                    + Math.Pow((_transformCamera.position.z - _transformCenter.position.z), 2));
     }
 }

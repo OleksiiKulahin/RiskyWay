@@ -47,10 +47,12 @@ public class ChunkPlacer : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             _generatedChunks[UnityEngine.Random.Range(0, _generatedChunks.Count)] 
-                = chunkPrefabs[UnityEngine.Random.Range(chunkPrefabs.Length - 2, chunkPrefabs.Length)];
+                = chunkPrefabs[UnityEngine.Random.Range(chunkPrefabs.Length - 2, chunkPrefabs.Length-1)];
         }
         _generatedChunks[_generatedChunks.Count-1] = chunkPrefabs[chunkPrefabs.Length - 3];
         _generatedChunks[_generatedChunks.Count-2] = chunkPrefabs[chunkPrefabs.Length - 5];
+        _generatedChunks[4] = chunkPrefabs[chunkPrefabs.Length - 2];
+        _generatedChunks[6] = chunkPrefabs[chunkPrefabs.Length - 2];
     }
 
     private Chunk getRandomChunk(int _traversedChunks)

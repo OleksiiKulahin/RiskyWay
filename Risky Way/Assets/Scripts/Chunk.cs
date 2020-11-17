@@ -18,6 +18,7 @@ public class Chunk : MonoBehaviour
     public UnityEvent ColliderLavaEnterEvent;
     public UnityEvent ColliderLavaExitEvent;
     public UnityEvent ColliderRotationEnterEvent;
+    public UnityEvent ColliderRotationExitEvent;
     public UnityEvent ColliderHighGroundEnterEvent;
 
 
@@ -68,7 +69,16 @@ public class Chunk : MonoBehaviour
     {
         if (ColliderRotationEnterEvent != null)
         {
-            _knifeController.changeDirection(roadRotation, begin, end);
+            _knifeController.isRotating = true;
+            _knifeController.circleCenter = circleCenter.position;
+        }
+    }
+    public void onColliderRotationExitEvent()
+    {
+        if (ColliderRotationExitEvent != null)
+        {
+            _knifeController.isRotating = false;
+            _knifeController.circleCenter = circleCenter.position;
         }
     }
 
