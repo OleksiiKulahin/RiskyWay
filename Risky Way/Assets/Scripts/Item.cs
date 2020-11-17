@@ -28,6 +28,7 @@ public class Item : MonoBehaviour
             if (name.Contains("Bomb"))
             {
                 transform.Find("Explosion").gameObject.SetActive(true);
+                transform.Find("Explosion").gameObject.GetComponent<ParticleSystem>().Play();
                 _knifeController.stabbingTime = 1f;
                 _knifeController.loseLife();
             }

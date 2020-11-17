@@ -86,7 +86,7 @@ public class ChunkPlacer : MonoBehaviour
 
         _spawnedChunks.Add(newChunk);
 
-        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[0].transform.position) > 10)
+        if (getLocalLenght(this.knifeCenter.transform.position, this._spawnedChunks[0].transform.position) > 20)
         {
             Destroy(_spawnedChunks[0].gameObject);
             _spawnedChunks.RemoveAt(0);

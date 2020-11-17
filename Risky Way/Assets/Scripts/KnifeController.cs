@@ -11,8 +11,10 @@ public class KnifeController : MonoBehaviour
     public int crystals;
     public float invulnerabilityTime;
     public float stabbingTime;
-    public GameObject _camera;
-    public GameObject _knifeCenter; 
+    public Material defaultMaterial;
+    public Material invulnerableMaterial;
+    public GameObject _knifeCenter;
+    private GameObject _camera;
     private Transform _transformKnife;
     private Transform _transformCenter;
     private Transform _transformCamera;
@@ -22,8 +24,6 @@ public class KnifeController : MonoBehaviour
     private Quaternion _defaultCameraRotation;
     private Quaternion _direction;
     private UIManager _UIManager;
-    public Material defaultMaterial;
-    public Material invulnerableMaterial;
 
     public void setPause(bool pause)
     {
