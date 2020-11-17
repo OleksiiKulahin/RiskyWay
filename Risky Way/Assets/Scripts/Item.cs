@@ -5,11 +5,9 @@ public class Item : MonoBehaviour
 {
     public UnityEvent ColliderItemEvent;
     private KnifeController _knifeController;
-    private UIManager _UIManager;
     void Start()
     {
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
-        _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     public void onColliderItemEvent()
@@ -27,7 +25,12 @@ public class Item : MonoBehaviour
             {
                 _knifeController.addCrystal();
             }
-
+            if (name.Contains("Bomb"))
+            {
+                transform.Find("Explosion").gameObject.SetActive(true);
+                _knifeController.stabbingTime = 1f;
+                _knifeController.loseLife();
+            }
         }
     }
 }

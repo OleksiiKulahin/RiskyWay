@@ -51,7 +51,6 @@ public class Chunk : MonoBehaviour
                 _knifeController._knifeCenter.transform.position.y-3,
                 _knifeController._knifeCenter.transform.position.z);
             _knifeController.loseLife();
-            _UIManager.updateLifes();
         }
     }
 
@@ -78,7 +77,6 @@ public class Chunk : MonoBehaviour
         if (ColliderHighGroundEnterEvent != null)
         {
             _knifeController.loseLife();
-            _UIManager.updateLifes();
         }
     }
 }

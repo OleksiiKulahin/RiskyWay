@@ -186,6 +186,7 @@ public class KnifeController : MonoBehaviour
             lifes--;
             if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other) { Handheld.Vibrate(); }
             invulnerabilityTime = 1f;
+            _UIManager.updateLifes();
         }
     }
     public void changeDirection(int angle, Transform begin, Transform end)
