@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinish: 0
-  roadRotation: 0
+  rotationAngle: 0
   begin: {fileID: 6281317398474154021}
   end: {fileID: 6257248068874395897}
   circleCenter: {fileID: 0}
@@ -313,15 +313,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.010648159
-      outSlope: 0.010648159
+      inSlope: 0.003118514
+      outSlope: 0.003118514
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.06910569
+      outWeight: 0.06504065
     - serializedVersion: 3
       time: 100
-      value: 0.3
+      value: 0.2
       inSlope: 0.0003025638
       outSlope: 0.0003025638
       tangentMode: 0
@@ -374,6 +374,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   ColliderRotationEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ColliderRotationExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ColliderHighGroundEnterEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &2034436991350895855

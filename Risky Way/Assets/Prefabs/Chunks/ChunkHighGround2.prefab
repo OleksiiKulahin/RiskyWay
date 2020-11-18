@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinish: 0
-  roadRotation: 0
+  rotationAngle: 0
   begin: {fileID: 5440357757690736289}
   end: {fileID: 2952532163002842329}
   circleCenter: {fileID: 0}
@@ -257,6 +257,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   ColliderRotationEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ColliderRotationExitEvent:
     m_PersistentCalls:
       m_Calls: []
   ColliderHighGroundEnterEvent:

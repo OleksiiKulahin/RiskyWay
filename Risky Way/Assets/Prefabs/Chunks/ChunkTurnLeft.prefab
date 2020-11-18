@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinish: 0
-  roadRotation: 90
+  rotationAngle: 90
   begin: {fileID: 2752075145996141775}
   end: {fileID: 4992483274133165751}
   circleCenter: {fileID: 5560457569412715777}

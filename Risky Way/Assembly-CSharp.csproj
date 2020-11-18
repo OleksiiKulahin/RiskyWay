@@ -89,6 +89,7 @@
     <Compile Include="Assets\True Explosions\System\Scripts\exploders\Exploder2D.cs" />
     <Compile Include="Assets\True Explosions\System\Scripts\exploders\SphereExploder.cs" />
     <None Include="Assets\True Explosions\System\Shaders\SphereVolumetricExplosion.shader" />
+    <None Include="Assets\SimpleSky\ReadMe.txt" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Programs/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     {
         _level++;
         _currentLevel.text = _level.ToString();
-        //тут будет увеличение сложности      
+        //тут будет увеличение сложности     
 
     }
 }

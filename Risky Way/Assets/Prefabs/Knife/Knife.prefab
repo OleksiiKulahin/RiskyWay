@@ -71,7 +71,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -248,13 +248,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pause: 0
+  rotationAngle: 0
   speed: 10
   lifes: 3
   crystals: 0
   invulnerabilityTime: 0
   stabbingTime: 0
-  _camera: {fileID: 0}
-  _knifeCenter: {fileID: 0}
   defaultMaterial: {fileID: 2100000, guid: 265a91ea59fb28b4c934f6148325254c, type: 2}
   invulnerableMaterial: {fileID: 2100000, guid: 3dfb626752f52e34f8afb4b8c3bb6de6,
     type: 2}
+  _knifeCenter: {fileID: 0}
+  circleCenter: {x: 0, y: 0, z: 0}
+  _direction: {x: 0, y: 0, z: 0, w: 0}

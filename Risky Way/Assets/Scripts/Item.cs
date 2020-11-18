@@ -5,6 +5,7 @@ public class Item : MonoBehaviour
 {
     public UnityEvent ColliderItemEvent;
     private KnifeController _knifeController;
+
     void Start()
     {
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
@@ -29,7 +30,7 @@ public class Item : MonoBehaviour
             {
                 transform.Find("Explosion").gameObject.SetActive(true);
                 transform.Find("Explosion").gameObject.GetComponent<ParticleSystem>().Play();
-                _knifeController.stabbingTime = 1f;
+                _knifeController.setStabbingTime(1f);
                 _knifeController.loseLife();
             }
         }

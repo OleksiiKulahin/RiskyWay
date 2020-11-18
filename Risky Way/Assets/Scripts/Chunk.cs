@@ -4,14 +4,14 @@ using UnityEngine.Events;
 public class Chunk : MonoBehaviour
 {
     public bool isFinish;
-    public int roadRotation;
+    public int rotationAngle;
     public Transform begin;
     public Transform end;
     public Transform circleCenter;
     public AnimationCurve chanceFromDistance;
+
     private KnifeController _knifeController;
     private ChunkPlacer _chunkPlacer;
-    private LevelManager _levelManager;
     private UIManager _UIManager;
 
     public UnityEvent ColliderChunkExitEvent;
@@ -21,12 +21,10 @@ public class Chunk : MonoBehaviour
     public UnityEvent ColliderRotationExitEvent;
     public UnityEvent ColliderHighGroundEnterEvent;
 
-
     void Start()
     {
         _chunkPlacer = GameObject.Find("ChunkPlacer").GetComponent<ChunkPlacer>();
         _knifeController = GameObject.Find("Knife").GetComponent<KnifeController>();
-        _levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         _UIManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
@@ -38,7 +36,7 @@ public class Chunk : MonoBehaviour
             if (tag == "Finish")
             {
                 _knifeController.setPause(true);
-                _UIManager.finishScreen = true;
+                _UIManager.setFinishScreen(true);
             }
         }
     }
@@ -47,10 +45,10 @@ public class Chunk : MonoBehaviour
     {
         if (ColliderLavaEnterEvent != null)
         {
-            _knifeController._knifeCenter.transform.position
-                =new Vector3(_knifeController._knifeCenter.transform.position.x,
-                _knifeController._knifeCenter.transform.position.y-3,
-                _knifeController._knifeCenter.transform.position.z);
+            _knifeController.getKnifeCenter().transform.position
+                =new Vector3(_knifeController.getKnifeCenter().transform.position.x,
+                _knifeController.getKnifeCenter().transform.position.y-3,
+                _knifeController.getKnifeCenter().transform.position.z);
             _knifeController.loseLife();
         }
     }
@@ -59,26 +57,24 @@ public class Chunk : MonoBehaviour
     {
         if (ColliderLavaExitEvent != null)
         {
-            _knifeController._knifeCenter.transform.position
-                =new Vector3(_knifeController._knifeCenter.transform.position.x,
-                _knifeController._knifeCenter.transform.position.y+3,
-                _knifeController._knifeCenter.transform.position.z);
+            _knifeController.getKnifeCenter().transform.position
+                =new Vector3(_knifeController.getKnifeCenter().transform.position.x,
+                _knifeController.getKnifeCenter().transform.position.y+3,
+                _knifeController.getKnifeCenter().transform.position.z);
         }
     }
     public void onColliderRotationEnterEvent()
     {
         if (ColliderRotationEnterEvent != null)
         {
-            _knifeController.isRotating = true;
-            _knifeController.circleCenter = circleCenter.position;
+            _knifeController.setRotationAngle(rotationAngle);
         }
     }
     public void onColliderRotationExitEvent()
     {
         if (ColliderRotationExitEvent != null)
         {
-            _knifeController.isRotating = false;
-            _knifeController.circleCenter = circleCenter.position;
+            _knifeController.setRotationAngle(0);
         }
     }
 
