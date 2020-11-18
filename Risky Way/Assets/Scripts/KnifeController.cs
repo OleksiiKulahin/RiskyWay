@@ -86,9 +86,12 @@ public class KnifeController : MonoBehaviour
                 _moveInput = Input.GetTouch(0).position.x;
             }
         }
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows){
+        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows
+            || SystemInfo.operatingSystemFamily == OperatingSystemFamily.MacOSX)
+        {
             _moveInput = Input.mousePosition.x;
         }
+
 
         if (!pause){
             shift = -1 * (_moveInput - (_width / 2)) * (4.8f / _width);

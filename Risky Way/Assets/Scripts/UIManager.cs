@@ -144,35 +144,17 @@ public class UIManager : MonoBehaviour
         _crystalsCount.text = _knifeController.crystals.ToString();
     }
     public void onFinishButton()
-    {        
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
-        {
-            _finishScreen = false;
-            _knifeController.setStartSettings();
-            _chunkPlacer.startSettings();
-            _levelManager.levelUp();
-            _startButtonObj.SetActive(true);
-        }
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
-        {
-            _finishScreen = false;
-            _chunkPlacer.startSettings();
-            _knifeController.setStartSettings();
-            _levelManager.levelUp();
-            _startButtonObj.SetActive(true);
-        }
+    {       
+        _finishScreen = false;
+        _knifeController.setStartSettings();
+        _chunkPlacer.startSettings();
+        _levelManager.levelUp();
+        _startButtonObj.SetActive(true);
     }
     public void onStartButton()
     {
         _startButtonObj.SetActive(false);
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Other)
-        {
-            _knifeController.pause = false;
-        }
-        if (SystemInfo.operatingSystemFamily == OperatingSystemFamily.Windows)
-        {
-            _knifeController.pause = false;
-        }
+        _knifeController.pause = false;
     }
 
     public void onRetryButton()
